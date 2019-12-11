@@ -1,4 +1,4 @@
-FROM sonarqube:8.0-community-beta
+FROM sonarqube:latest
 
 # Download and install sonar plugins
 
