@@ -1,4 +1,4 @@
-FROM sonarqube:7.9
+FROM sonarqube:7.1
 
 # Download and install sonar plugins
 
