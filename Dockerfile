@@ -2,7 +2,6 @@ FROM openjdk:11-jre-slim
 
 RUN apt-get update \
     && apt-get install -y curl unzip \
-    && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Http port
@@ -11,7 +10,7 @@ EXPOSE 9000
 RUN groupadd -r sonarqube && useradd -r -g sonarqube sonarqube
 
 ARG SONARQUBE_VERSION=8.0
-ARG SONARQUBE_ZIP_URL=https://binaries.sonarsource.com/CommercialDistribution/sonarqube-developer/sonarqube-developer-${SONARQUBE_VERSION}.zip
+ARG SONARQUBE_ZIP_URL=https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-${SONARQUBE_VERSION}.zip
 ENV SONAR_VERSION=${SONARQUBE_VERSION} \
     SONARQUBE_HOME=/opt/sq \
     SONARQUBE_PUBLIC_HOME=/opt/sonarqube
@@ -52,14 +51,9 @@ RUN set -x \
     && ln -s "$SONARQUBE_PUBLIC_HOME/data" "$SONARQUBE_HOME/data" \
     && chown --recursive sonarqube:sonarqube "$SONARQUBE_HOME" "$SONARQUBE_PUBLIC_HOME"
 
-## Swfit
-
-RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/Backelite/sonar-swift/releases/download/0.4.5/backelite-sonar-swift-plugin-0.4.5.jar
-    
-
-
-#COPY --chown=sonarqubemobile:sonarqubemobile run.sh "$SONARQUBE_HOME/bin/"
+COPY --chown=sonarqube:sonarqube run.sh "$SONARQUBE_HOME/bin/"
 
 USER sonarqube
 WORKDIR $SONARQUBE_HOME
 ENTRYPOINT ["./bin/run.sh"]
+© 2019 GitHub, Inc.
