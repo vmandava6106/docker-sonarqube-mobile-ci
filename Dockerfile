@@ -59,7 +59,7 @@ RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/Backelite/sona
 
 RUN groupadd -r sonarqubemobile \
     && useradd -r -g sonarqubemobile sonarqubemobile
-COPY --chown=sonarqubemobile:sonarqubemobile --from=build $SONARQUBE_HOME $SONARQUBE_HOME
+COPY --chown=sonarqubemobile:sonarqubemobile run.sh "$SONARQUBE_HOME/bin/"
 
 USER sonarqubemobile
 WORKDIR $SONARQUBE_HOME
