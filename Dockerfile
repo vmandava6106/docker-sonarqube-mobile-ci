@@ -1,7 +1,7 @@
-FROM sonarqube
-
-RUN  apt-get update \
-  && apt-get install -y wget 
+FROM sonarqube:latest
+USER root
+RUN  sudo apt-get update \
+  && sudo apt-get install -y wget 
   
 
 
