@@ -57,10 +57,9 @@ RUN set -x \
 RUN wget -P /opt/sonarqube/extensions/plugins/ https://github.com/Backelite/sonar-swift/releases/download/0.4.5/backelite-sonar-swift-plugin-0.4.5.jar
     
 
-RUN groupadd -r sonarqubemobile \
-    && useradd -r -g sonarqubemobile sonarqubemobile
-COPY --chown=sonarqubemobile:sonarqubemobile run.sh "$SONARQUBE_HOME/bin/"
 
-USER sonarqubemobile
+#COPY --chown=sonarqubemobile:sonarqubemobile run.sh "$SONARQUBE_HOME/bin/"
+
+USER sonarqube
 WORKDIR $SONARQUBE_HOME
 ENTRYPOINT ["./bin/run.sh"]
