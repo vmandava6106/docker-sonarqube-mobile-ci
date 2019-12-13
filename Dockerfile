@@ -1,9 +1,8 @@
 FROM sonarqube
 
 RUN  apt-get update \
-  && apt-get install -y wget \
-  && apt-get -y install sudo  \
-  && rm -rf /var/lib/apt/lists/partial/*
+  && apt-get install -y wget 
+  
 
 
 # Download and install sonar plugins
