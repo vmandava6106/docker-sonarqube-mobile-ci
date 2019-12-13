@@ -2,7 +2,7 @@ FROM sonarqube
 
 RUN apt-get update && \
     apt-get -y install sudo \
-   && apt-get install -y wget 
+   && apt-get -y install wget 
 # Download and install sonar plugins
 
 RUN sudo chmod -R ugo+rw /opt/sonarqube/extensions/plugins/
