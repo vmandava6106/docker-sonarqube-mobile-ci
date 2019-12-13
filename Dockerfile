@@ -2,8 +2,8 @@ FROM sonarqube
 
 RUN  apt-get update \
   && apt-get install -y wget \
-  && apt-get -y install sudo \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get -y install sudo 
+
 
 # Download and install sonar plugins
 
